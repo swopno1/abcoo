@@ -1,0 +1,6 @@
+{
+  "name": "ABCoo",
+  "description": "A colorful, playful alphabet-learning app for young children to learn A to Z through speech, phonetics, friendly illustrations, and interactive repetition.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
