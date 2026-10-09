@@ -46,13 +46,13 @@ Protecting young children's safety online is paramount:
 
 ## 5. Advertising & Google AdMob
 
-The application is structured to support child-safe advertising under Google Play's Designed for Families Program:
-- During active testing and development, official Google test identifiers are used.
+The application integrates the official Google Mobile Ads SDK (AdMob) under the Google Play Designed for Families Program:
 - All advertising requests are strictly configured with:
   - `TAG_FOR_CHILD_DIRECTED_TREATMENT = TRUE` (COPPA Compliance)
   - `MAX_AD_CONTENT_RATING = "G"` (General Audiences only)
-  - Non-personalized advertising only (no interest-based targeting or remarketing).
-- Advertisements are placed in unobtrusive, clearly demarcated areas and never interfere with normal toddler touch interactions or navigation.
+  - Non-personalized advertising only (zero interest-based tracking or behavioral profiling).
+- Banner and interstitial advertisements are placed exclusively at natural pause/transition points and never disrupt active toddler touch interactions, games, or letter tracing.
+- Parental gates protect any publisher links or external actions.
 
 ---
 

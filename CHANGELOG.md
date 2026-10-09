@@ -2,6 +2,16 @@
 
 All notable changes to **ABCoo** are documented in this file.
 
+## [2.0.0] - 2026-10-08
+
+### Added
+- Integrated official Google Mobile Ads (AdMob) SDK `play-services-ads:23.6.0`.
+- Configured production Google Mobile Ads App ID: `ca-app-pub-5222053984568989~6084120595`.
+- Implemented real Banner Ad view with Banner 1 unit ID: `ca-app-pub-5222053984568989/7294395957`.
+- Implemented Interstitial Ad manager with Interstitial 1 unit ID: `ca-app-pub-5222053984568989/6630296959`.
+- Full Google Play Families and COPPA compliance enforced (`TAG_FOR_CHILD_DIRECTED_TREATMENT_TRUE` and `MAX_AD_CONTENT_RATING_G`).
+- Seamless cooldown management for child-safe, non-intrusive interstitial transitions.
+
 ## [1.0.0] - 2026-10-08
 
 ### Added

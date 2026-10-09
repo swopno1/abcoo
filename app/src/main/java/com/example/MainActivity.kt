@@ -54,6 +54,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.ads.AdManager
 import com.example.audio.SpeechManager
 import com.example.data.AlphabetRepository
 import com.example.ui.screens.AlphabetGridScreen
@@ -75,11 +76,15 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         speechManager = SpeechManager(this)
+        AdManager.initialize(this)
         enableEdgeToEdge()
 
         setContent {
             MyApplicationTheme {
-                ABCooApp(speechManager = speechManager)
+                ABCooApp(
+                    speechManager = speechManager,
+                    onTriggerInterstitial = { AdManager.showInterstitial(this@MainActivity) }
+                )
             }
         }
     }
@@ -91,7 +96,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ABCooApp(speechManager: SpeechManager) {
+fun ABCooApp(
+    speechManager: SpeechManager,
+    onTriggerInterstitial: () -> Unit = {}
+) {
     var selectedTab by rememberSaveable { mutableStateOf(MainTab.LEARN) }
     var currentLetterIndex by rememberSaveable { mutableIntStateOf(0) }
     var isAutoPlay by rememberSaveable { mutableStateOf(false) }
@@ -264,7 +272,8 @@ fun ABCooApp(speechManager: SpeechManager) {
                 MainTab.PLAY -> {
                     LetterQuizScreen(
                         items = alphabetItems,
-                        speechManager = speechManager
+                        speechManager = speechManager,
+                        onMilestoneReached = onTriggerInterstitial
                     )
                 }
             }

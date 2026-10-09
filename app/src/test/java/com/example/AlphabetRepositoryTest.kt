@@ -35,10 +35,12 @@ class AlphabetRepositoryTest {
     }
 
     @Test
-    fun adConfig_isProperlyConfiguredForTestAndFamilies() {
-        assertTrue("Test mode should be enabled for development", AdConfig.IS_TEST_MODE)
-        assertTrue("Child directed treatment must be enabled", AdConfig.CHILD_DIRECTED_TREATMENT)
-        assertEquals("Max ad content rating must be G for families", "G", AdConfig.MAX_AD_CONTENT_RATING)
-        assertTrue("Test App ID must be official Google test ID", AdConfig.TEST_APP_ID.contains("ca-app-pub-3940256099942544"))
+    fun adConfig_isProperlyConfiguredWithUserIds() {
+        assertEquals("ca-app-pub-5222053984568989~6084120595", AdConfig.PRODUCTION_APP_ID)
+        assertEquals("ca-app-pub-5222053984568989/7294395957", AdConfig.PRODUCTION_BANNER_ID)
+        assertEquals("ca-app-pub-5222053984568989/6630296959", AdConfig.PRODUCTION_INTERSTITIAL_ID)
+        assertTrue("Ads must be enabled", AdConfig.ADS_ENABLED)
+        assertEquals(AdConfig.PRODUCTION_BANNER_ID, AdConfig.getBannerAdUnitId())
+        assertEquals(AdConfig.PRODUCTION_INTERSTITIAL_ID, AdConfig.getInterstitialAdUnitId())
     }
 }

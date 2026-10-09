@@ -69,7 +69,8 @@ import kotlinx.coroutines.launch
 fun LetterQuizScreen(
     items: List<AlphabetItem>,
     speechManager: SpeechManager,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onMilestoneReached: () -> Unit = {}
 ) {
     var targetIndex by remember { mutableIntStateOf((0 until items.size).random()) }
     val targetItem = items[targetIndex]
@@ -294,6 +295,9 @@ fun LetterQuizScreen(
                                 showSuccessCelebration = true
                                 scoreCount++
                                 speechManager.speakEncouragement()
+                                if (scoreCount % 4 == 0) {
+                                    onMilestoneReached()
+                                }
                                 coroutineScope.launch {
                                     delay(2000)
                                     targetIndex = (0 until items.size).random()
